@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+#########
+#BSUB -n 8
+#BSUB -R "span[ptile=8]"
+#BSUB -J ocn_averages
+#BSUB -W 12:00
+#BSUB -P 082817155682
+#BSUB -L /bin/bash           #Uses the bash login shell to initialize the job's execution environment.
+#BSUB -R "rusage[mem=18000]"  #Request 25000MB per process (CPU) for the job
+
+################
+module load Anaconda/3-5.0.0.1
+source activate python3
+###mpirun -n 2 python reg3.py
+python reg3.py 
